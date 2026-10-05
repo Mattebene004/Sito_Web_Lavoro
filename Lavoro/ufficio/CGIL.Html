@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>CGIL - Servizi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @page {
+      size: A4 landscape;
+      margin: 8mm;
+    }
+
+    html, body {
+      width: 277mm;
+      height: 194mm;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .page {
+      width: 277mm;
+      height: 194mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6mm;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-img {
+      height: 40mm;
+      width: auto;
+      display: block;
+    }
+
+    .subtitle {
+      font-size: 28px;
+      font-weight: bold;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    /* GRIGLIA SERVIZI */
+    .grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .card {
+      flex: 1;
+      max-width: 130mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      border: 1.5px solid white;
+      padding: 12px 10px;
+    }
+
+    .card svg {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+    }
+
+    .card-label {
+      font-size: 16px;
+      font-weight: bold;
+      color: #111;
+      text-align: center;
+    }
+
+    @media print {
+      html, body {
+        width: 277mm;
+        height: 194mm;
+        overflow: hidden;
+      }
+      .page {
+        width: 277mm;
+        height: 194mm;
+      }
+      .logo-img {
+        height: 40mm;
+        width: auto;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img class="logo-img" src="logocgil.jpeg" alt="Logo CGIL">
+      <div class="subtitle">COSA SI FA DENTRO QUESTO UFFICIO</div>
+    </div>
+
+    <!-- GRIGLIA -->
+    <div class="grid">
+
+      <div class="row">
+        <div class="card">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="32,8 6,30 12,30 12,56 52,56 52,30 58,30" fill="#cc0000"/>
+            <rect x="22" y="36" width="10" height="20" fill="white"/>
+            <rect x="36" y="36" width="10" height="12" fill="white"/>
+            <circle cx="20" cy="18" r="4" fill="#333"/>
+            <line x1="20" y1="22" x2="20" y2="32" stroke="#333" stroke-width="2.5"/>
+            <line x1="14" y1="26" x2="26" y2="26" stroke="#333" stroke-width="2.5"/>
+            <line x1="20" y1="32" x2="15" y2="38" stroke="#333" stroke-width="2.5"/>
+            <line x1="20" y1="32" x2="25" y2="38" stroke="#333" stroke-width="2.5"/>
+            <circle cx="44" cy="20" r="3" fill="#333"/>
+            <line x1="44" y1="23" x2="44" y2="31" stroke="#333" stroke-width="2"/>
+            <line x1="39" y1="27" x2="49" y2="27" stroke="#333" stroke-width="2"/>
+            <line x1="44" y1="31" x2="40" y2="37" stroke="#333" stroke-width="2"/>
+            <line x1="44" y1="31" x2="48" y2="37" stroke="#333" stroke-width="2"/>
+          </svg>
+          <span class="card-label">ISEE</span>
+        </div>
+
+        <div class="card">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="6" width="38" height="50" rx="3" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+            <line x1="18" y1="18" x2="44" y2="18" stroke="#cc0000" stroke-width="2"/>
+            <line x1="18" y1="26" x2="44" y2="26" stroke="#aaa" stroke-width="2"/>
+            <line x1="18" y1="34" x2="44" y2="34" stroke="#aaa" stroke-width="2"/>
+            <line x1="18" y1="42" x2="32" y2="42" stroke="#aaa" stroke-width="2"/>
+            <text x="34" y="50" font-size="14" fill="#cc0000" font-weight="bold" font-family="Arial">€</text>
+          </svg>
+          <span class="card-label">RED</span>
+        </div>
+
+        <div class="card">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="6" width="36" height="48" rx="3" fill="#fff8e1" stroke="#333" stroke-width="2"/>
+            <line x1="16" y1="18" x2="36" y2="18" stroke="#aaa" stroke-width="2"/>
+            <line x1="16" y1="26" x2="36" y2="26" stroke="#aaa" stroke-width="2"/>
+            <line x1="16" y1="34" x2="28" y2="34" stroke="#aaa" stroke-width="2"/>
+            <rect x="38" y="30" width="8" height="22" rx="2" transform="rotate(-45 38 30)" fill="#f9a825" stroke="#333" stroke-width="1.5"/>
+            <polygon points="50,50 54,58 46,54" fill="#333"/>
+          </svg>
+          <span class="card-label">730</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="12" r="5" fill="#555"/>
+            <line x1="22" y1="17" x2="22" y2="34" stroke="#555" stroke-width="3"/>
+            <line x1="14" y1="24" x2="30" y2="24" stroke="#555" stroke-width="2.5"/>
+            <line x1="22" y1="34" x2="16" y2="44" stroke="#555" stroke-width="2.5"/>
+            <line x1="22" y1="34" x2="28" y2="44" stroke="#555" stroke-width="2.5"/>
+            <line x1="28" y1="24" x2="34" y2="44" stroke="#888" stroke-width="2"/>
+            <circle cx="46" cy="12" r="5" fill="#cc0000"/>
+            <line x1="46" y1="17" x2="46" y2="34" stroke="#cc0000" stroke-width="3"/>
+            <line x1="38" y1="24" x2="54" y2="24" stroke="#cc0000" stroke-width="2.5"/>
+            <line x1="46" y1="34" x2="40" y2="44" stroke="#cc0000" stroke-width="2.5"/>
+            <line x1="46" y1="34" x2="52" y2="44" stroke="#cc0000" stroke-width="2.5"/>
+            <path d="M32,20 C32,17 36,17 36,20 C36,17 40,17 40,20 C40,24 36,28 36,28 C36,28 32,24 32,20Z" fill="#cc0000"/>
+          </svg>
+          <span class="card-label">BADANTI</span>
+        </div>
+
+        <div class="card">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="4" width="44" height="52" rx="3" fill="#fff" stroke="#333" stroke-width="2"/>
+            <circle cx="32" cy="22" r="10" fill="#cc0000" opacity="0.15" stroke="#cc0000" stroke-width="2"/>
+            <text x="27" y="27" font-size="14" fill="#cc0000" font-weight="bold" font-family="Arial">§</text>
+            <line x1="18" y1="38" x2="46" y2="38" stroke="#aaa" stroke-width="2"/>
+            <line x1="18" y1="45" x2="46" y2="45" stroke="#aaa" stroke-width="2"/>
+            <path d="M18,52 Q24,48 30,52 Q36,56 42,52" stroke="#333" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span class="card-label">SUCCESSIONI</span>
+        </div>
+
+        <div class="card">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="32,6 6,28 12,28 12,54 52,54 52,28 58,28" fill="#cc0000"/>
+            <rect x="24" y="34" width="16" height="20" fill="white"/>
+            <circle cx="48" cy="48" r="12" fill="#f9a825" stroke="#e65100" stroke-width="2"/>
+            <text x="42" y="53" font-size="14" fill="#e65100" font-weight="bold" font-family="Arial">€</text>
+          </svg>
+          <span class="card-label">IMU</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

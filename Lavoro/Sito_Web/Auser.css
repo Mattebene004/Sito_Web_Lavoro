@@ -1,0 +1,216 @@
+.Titolo_sottotitolo {
+            text-align: center;
+            color: red;
+            padding-bottom: 40px;
+            font-size: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #f5f5f5;
+            padding: 15px 30px;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #0066cc;
+        }
+
+        main {
+            padding: 40px 30px;
+        }
+
+        main > p:first-child {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        main > p:nth-of-type(2) {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .project-card {
+            text-align: center;
+        }
+
+        .project-card img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .project-card p {
+            margin-top: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        footer {
+            background-color: #f5f5f5;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+        }
+
+        footer h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .footer-links {
+            flex: 1;
+        }
+
+        .footer-links p {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .footer-links a {
+            color: #0066cc;
+            text-decoration: none;
+            margin-left: 8px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-logo {
+            flex-shrink: 0;
+        }
+
+        .footer-logo img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #f5f5f5;
+            padding: 15px 30px;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #0066cc;
+        }
+        main {
+            padding: 0;
+            display: block;
+        }
+        .ChiSiamo {
+            width: 100%;
+        }
+        .ChiSiamo img {
+            width: 50%;
+            height: 15%;
+        }
+        .titolo {
+            color: red;
+            font-size: 32px;
+            font-weight: bold;
+            padding: 15px 30px;
+        }
+        p {
+            padding: 10px 30px;
+            line-height: 1.6;
+        }
+        .sottotitolo {
+            color: red;
+            font-weight: bold;
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+        ul {
+            padding: 10px 30px 10px 60px;
+            line-height: 1.8;
+        }
+        li {
+            margin-bottom: 8px;
+        }

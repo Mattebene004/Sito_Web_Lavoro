@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorie Sindacali CGIL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Georgia', serif;
+            font-size: 28px;
+        }
+
+        .intestazione {
+            text-align: center;
+            border-bottom: 2px solid #b00000;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .intestazione h1 {
+            font-size: 28px;
+            color: #b00000;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .intestazione p {
+            font-size: 28px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        .riga-voci {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .voce {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            padding: 16px 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .voce img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0 auto 12px auto;
+            display: block;
+        }
+
+        .voce .categoria {
+            font-size: 28px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 4px;
+        }
+
+        .voce .sigla {
+            font-size: 28px;
+            color: #b00000;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .voce .nome-completo {
+            font-size: 28px;
+            color: #555;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .logo-finale {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .logo-finale img {
+            width: 80px;
+            height: 80px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="width: 100%; padding: 20px;">
+  <!-- LOGO CGIL -->
+        <div class="logo-finale">
+            <img src="logocgil.jpeg" alt="Logo CGIL">
+        </div>
+
+        <div class="intestazione">
+            <h1>Categorie Sindacali</h1>
+            <p>Federazioni affiliate alla CGIL</p>
+        </div>
+
+        <div class="riga-voci">
+
+            <!-- FIOM -->
+            <div class="voce">
+                <img src="meccanico.png" alt="Meccanici">
+                <p class="categoria">Metalmeccanici</p>
+                <p class="sigla">FIOM</p>
+                <p class="nome-completo">Federazione Impiegati Operai Metallurgici</p>
+            </div>
+
+            <!-- FILLEA -->
+            <div class="voce">
+                <img src="Muratore.png" alt="Muratori">
+                <p class="categoria">Muratori</p>
+                <p class="sigla">FILLEA</p>
+                <p class="nome-completo">Federazione Italiana Lavoratori Costruzioni e Legno</p>
+            </div>
+
+            <!-- FISAC -->
+            <div class="voce">
+                <img src="cassiere.png" alt="Cassieri">
+                <p class="categoria">Cassieri</p>
+                <p class="sigla">FISAC</p>
+                <p class="nome-completo">Federazione dei Lavoratori del Credito e delle Assicurazioni</p>
+            </div>
+
+        </div>
+
+      
+    </div>
+
+</body>
+</html>
