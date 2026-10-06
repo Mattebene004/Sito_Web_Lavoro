@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUSER Gubbio - Tesseramento</title>
+    <link rel="stylesheet" href="Auser.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <p> <a href="Auser.html"> <img src="Logo_Auser.png" alt="Logo AUSER"></a></p>
+
+            <nav>
+                <ul>
+                    <li><a href="Chi_Siamo.html">Chi siamo</a></li>
+                    <li><a href="Cosa_Facciamo.html">Cosa facciamo</a></li>
+                    <li><a href="Tesseramentio.html">Tesseramento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Modulo di Registrazione</h1>
+
+        <div id="message" class="message"></div>
+
+        <form id="registrationForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nome">Nome *</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="cognome">Cognome *</label>
+                    <input type="text" id="cognome" name="cognome" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="indirizzo">Indirizzo *</label>
+                <input type="text" id="indirizzo" name="indirizzo" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dataNascita">Data di Nascita *</label>
+                    <input type="date" id="dataNascita" name="dataNascita" required>
+                </div>
+                <div class="form-group">
+                    <label for="codiceFiscale">Codice Fiscale *</label>
+                    <input type="text" id="codiceFiscale" name="codiceFiscale" placeholder="XXXXXX00X00X000X" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Numero di Telefono *</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+39 3XX XXX XXXX" required>
+            </div>
+
+            <button type="submit" id="submitBtn">Invia Registrazione</button>
+        </form>
+    </div>
+
+    <footer>
+        <h2>I nostri contatti</h2>
+        <div class="footer-content">
+            <div class="footer-links">
+                <p><img src="faceboock.png" alt="faceboock"><a href="https://www.facebook.com/share/19EokS28yr/">La
+                        nostra pagina Facebook</a></p>
+
+                <p><img src="instagram.png" alt="instagram"><a
+                        href="https://www.instagram.com/progettoauser2026/">Seguici su Instagram</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        emailjs.init("h8BJVVHQtdZbnaMbi");
+
+        document.getElementById('registrationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const messageDiv = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+
+            messageDiv.className = 'message';
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Invio in corso...';
+
+            const templateParams = {
+                to_email: "progettoauser2026@gmail.com",
+                nome: document.getElementById('nome').value,
+                cognome: document.getElementById('cognome').value,
+                indirizzo: document.getElementById('indirizzo').value,
+                dataNascita: document.getElementById('dataNascita').value,
+                codiceFiscale: document.getElementById('codiceFiscale').value,
+                telefono: document.getElementById('telefono').value
+            };
+
+            emailjs.send("service_qwwrl0s", "template_b91aryq", templateParams)
+                .then(function (response) {
+                    messageDiv.className = 'message success';
+                    messageDiv.textContent = '✓ Registrazione completata! Email inviata con successo.';
+                    document.getElementById('registrationForm').reset();
+                    submitBtn.innerHTML = 'Invia Registrazione';
+                    submitBtn.disabled = false;
+                }, function (error) {
+                    messageDiv.className = 'message error';
+                    messageDiv.textContent = '✗ Errore: ' + (error.text || 'Invio fallito');
+                    console.error('Errore EmailJS:', error);
+                    submitBtn.innerHTML = 'Invia Registrazione';
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
+</body>
+
+</html>
