@@ -1,124 +1,268 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUSER Gubbio - Tesseramento</title>
     <link rel="stylesheet" href="Auser.css">
-
 </head>
-
 <body>
     <header>
         <div class="header-container">
-            <p> <a href="Auser.html"> <img src="Logo_Auser.png" alt="Logo AUSER"></a></p>
-
-            <nav>
+            <h1><a href="index.html"><img src="Logo_Auser.png" alt="Logo AUSER"></a></h1>
+            <button class="menu-toggle" type="button" aria-label="Apri menu" aria-expanded="false" aria-controls="main-navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="main-navigation">
                 <ul>
                     <li><a href="Chi_Siamo.html">Chi siamo</a></li>
                     <li><a href="Cosa_Facciamo.html">Cosa facciamo</a></li>
-                    <li><a href="Tesseramentio.html">Tesseramento</a></li>
+                    <li><a href="Tesseramento.html">Tesseramento</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="container">
-        <h1>Modulo di Registrazione</h1>
-
+    <main class="tess-container">
+        <h1 class="tess-title">Modulo di richiesta di Tesseramento</h1>
+        <p class="tess-cost">Costo del tesseramento: 15 euro</p>
         <div id="message" class="message"></div>
 
         <form id="registrationForm">
+            <!-- DATI DI BASE -->
+            <p class="tess-section">Dati di Base</p>
             <div class="form-row">
-                <div class="form-group">
-                    <label for="nome">Nome *</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="cognome">Cognome *</label>
-                    <input type="text" id="cognome" name="cognome" required>
-                </div>
+                <div class="form-group"><label for="cognome">Cognome *</label><input type="text" id="cognome" name="cognome" required></div>
+                <div class="form-group"><label for="nome">Nome *</label><input type="text" id="nome" name="nome" required></div>
             </div>
-
-            <div class="form-group">
-                <label for="indirizzo">Indirizzo *</label>
-                <input type="text" id="indirizzo" name="indirizzo" required>
-            </div>
-
             <div class="form-row">
-                <div class="form-group">
-                    <label for="dataNascita">Data di Nascita *</label>
-                    <input type="date" id="dataNascita" name="dataNascita" required>
-                </div>
-                <div class="form-group">
-                    <label for="codiceFiscale">Codice Fiscale *</label>
-                    <input type="text" id="codiceFiscale" name="codiceFiscale" placeholder="XXXXXX00X00X000X" required>
+                <div class="form-group"><label for="dataNascita">Data Nascita *</label><input type="date" id="dataNascita" name="dataNascita" required></div>
+                <div class="form-group"><label for="sesso">Sesso *</label>
+                    <select id="sesso" name="sesso" required>
+                        <option value="">Seleziona</option>
+                        <option value="M">Maschio</option>
+                        <option value="F">Femmina</option>
+                    </select>
                 </div>
             </div>
+            <div class="form-row">
+                <div class="form-group"><label for="provinciaNascita">Provincia Nascita *</label><select id="provinciaNascita" name="provinciaNascita" required><option value="">Seleziona</option></select></div>
+                <div class="form-group"><label for="comuneNascita">Comune Nascita *</label><select id="comuneNascita" name="comuneNascita" required><option value="">Seleziona</option></select></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="codiceFiscale">Codice Fiscale *</label><input type="text" id="codiceFiscale" name="codiceFiscale" placeholder="XXXXXXXXXXXXXXXX" maxlength="16" style="text-transform: uppercase;" required></div>
+            </div>
 
-            <div class="form-group">
-                <label for="telefono">Numero di Telefono *</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="+39 3XX XXX XXXX" required>
+            <!-- RECAPITI TELEFONICI -->
+            <p class="tess-section">Recapiti Telefonici</p>
+            <div class="form-row">
+                <div class="form-group"><label for="telefono1">Telefono 1 *</label><input type="tel" id="telefono1" name="telefono1" placeholder="+39 3XX XXX XXXX" required></div>
+                <div class="form-group"><label for="telefono2">Telefono 2</label><input type="tel" id="telefono2" name="telefono2" placeholder="+39 3XX XXX XXXX"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="telefono3">Telefono 3</label><input type="tel" id="telefono3" name="telefono3" placeholder="+39 3XX XXX XXXX"></div>
+            </div>
+
+            <!-- INDIRIZZO RESIDENZA -->
+            <p class="tess-section">Indirizzo Residenza</p>
+            <div class="form-row">
+                <div class="form-group"><label for="indirizzoResidenza">Indirizzo *</label><input type="text" id="indirizzoResidenza" name="indirizzoResidenza" required></div>
+                <div class="form-group"><label for="provinciaResidenza">Provincia Residenza *</label><select id="provinciaResidenza" name="provinciaResidenza" required><option value="">Seleziona</option></select></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="capResidenza">CAP Residenza *</label><input type="text" id="capResidenza" name="capResidenza" placeholder="00000" maxlength="5" pattern="[0-9]{5}" inputmode="numeric" required></div>
+                <div class="form-group"><label for="comuneResidenza">Comune Residenza *</label><select id="comuneResidenza" name="comuneResidenza" required><option value="">Seleziona</option></select></div>
+            </div>
+
+            <!-- INDIRIZZO CORRISPONDENZA -->
+            <p class="tess-section">Indirizzo Corrispondenza</p>
+            <div class="form-row">
+                <div class="form-group"><label for="indirizzoCorrispondenza">Indirizzo Corrispondenza</label><input type="text" id="indirizzoCorrispondenza" name="indirizzoCorrispondenza"></div>
+                <div class="form-group"><label for="provinciaCorrispondenza">Provincia Corrispondenza</label><select id="provinciaCorrispondenza" name="provinciaCorrispondenza"><option value="">Seleziona</option></select></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="capCorrispondenza">CAP Corrispondenza</label><input type="text" id="capCorrispondenza" name="capCorrispondenza" placeholder="00000" maxlength="5" pattern="[0-9]{5}" inputmode="numeric"></div>
+                <div class="form-group"><label for="comuneCorrispondenza">Comune Corrispondenza</label><select id="comuneCorrispondenza" name="comuneCorrispondenza"><option value="">Seleziona</option></select></div>
+            </div>
+
+            <!-- ALTRI DATI -->
+            <p class="tess-section">Altri Dati</p>
+            <div class="form-row">
+                <div class="form-group"><label for="email">E-Mail Personale</label><input type="email" id="email" name="email"></div>
+                <div class="form-group"><label for="impiego">Impiego</label>
+                    <select id="impiego" name="impiego">
+                        <option value="">Seleziona</option>
+                        <option value="Occupato">Occupato</option>
+                        <option value="Disoccupato">Disoccupato</option>
+                        <option value="Pensionato">Pensionato</option>
+                        <option value="Studente">Studente</option>
+                        <option value="Altro">Altro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="specializzazione">Specializzazione</label>
+                    <select id="specializzazione" name="specializzazione">
+                        <option value="">Seleziona</option>
+                        <option value="Sanitaria">Sanitaria</option>
+                        <option value="Amministrativa">Amministrativa</option>
+                        <option value="Tecnica">Tecnica</option>
+                        <option value="Sociale">Sociale</option>
+                        <option value="Altro">Altro</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="sedeOperativa">Sede Operativa Locale</label>
+                    <select id="sedeOperativa" name="sedeOperativa">
+                        <option value="">Seleziona</option>
+                        <option value="Gubbio">Gubbio</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="coordRiferimento">Coord di Riferimento</label><select id="coordRiferimento" name="coordRiferimento"><option value="">Seleziona</option></select></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="note">Note</label><textarea id="note" name="note" rows="3"></textarea></div>
+            </div>
+
+            <input type="hidden" id="strutturaAppartenenza" name="strutturaAppartenenza" value="AUSER Territoriale Alto Chiascio ODV-ETS">
+
+            <div class="privacy-box">
+                <input type="checkbox" id="privacy" name="privacy" required>
+                <label for="privacy">Dichiaro di aver letto e accetto l'informativa sulla privacy.</label>
             </div>
 
             <button type="submit" id="submitBtn">Invia Registrazione</button>
         </form>
-    </div>
+    </main>
 
-    <footer>
-        <h2>I nostri contatti</h2>
-        <div class="footer-content">
-            <div class="footer-links">
-                <p><img src="faceboock.png" alt="faceboock"><a href="https://www.facebook.com/share/19EokS28yr/">La
-                        nostra pagina Facebook</a></p>
-
-                <p><img src="instagram.png" alt="instagram"><a
-                        href="https://www.instagram.com/progettoauser2026/">Seguici su Instagram</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-        emailjs.init("h8BJVVHQtdZbnaMbi");
+        const ACCESS_KEY = '38302d18-c8c7-4846-9679-ee1896d504fb';
+        const COMUNI_REMOTE = 'https://raw.githubusercontent.com/matteocontrini/comuni-json/master/comuni.json';
 
-        document.getElementById('registrationForm').addEventListener('submit', function (e) {
+        async function caricaComuni() {
+            try {
+                const r = await fetch(COMUNI_REMOTE);
+                if (!r.ok) throw new Error('Impossibile scaricare i comuni');
+                return await r.json();
+            } catch (err) {
+                console.error('Errore nel caricamento dei comuni:', err);
+                throw err;
+            }
+        }
+
+        function costruisciProvince(comuni) {
+            const province = {};
+            comuni.forEach(c => {
+                const sigla = c.sigla;
+                if (!province[sigla]) {
+                    province[sigla] = { nome: c.provincia.nome, comuni: [] };
+                }
+                province[sigla].comuni.push(c.nome);
+            });
+            Object.values(province).forEach(p =>
+                p.comuni.sort((a, b) => a.localeCompare(b, 'it'))
+            );
+            return province;
+        }
+
+        function collegaSelect(province, provId, comId) {
+            const selProv = document.getElementById(provId);
+            const selCom = document.getElementById(comId);
+
+            Object.entries(province)
+                .sort((a, b) => a[1].nome.localeCompare(b[1].nome, 'it'))
+                .forEach(([sigla, p]) => {
+                    const opt = document.createElement('option');
+                    opt.value = sigla;
+                    opt.textContent = p.nome + ' (' + sigla + ')';
+                    selProv.appendChild(opt);
+                });
+
+            selProv.addEventListener('change', () => {
+                selCom.innerHTML = '<option value="">Seleziona</option>';
+                const p = province[selProv.value];
+                if (!p) return;
+                p.comuni.forEach(nome => {
+                    const opt = document.createElement('option');
+                    opt.value = nome;
+                    opt.textContent = nome;
+                    selCom.appendChild(opt);
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const comuni = await caricaComuni();
+                const province = costruisciProvince(comuni);
+                collegaSelect(province, 'provinciaNascita', 'comuneNascita');
+                collegaSelect(province, 'provinciaResidenza', 'comuneResidenza');
+                collegaSelect(province, 'provinciaCorrispondenza', 'comuneCorrispondenza');
+            } catch (err) {
+                console.error('Errore nel caricamento dei comuni:', err);
+            }
+        });
+
+        // Gestisce l'invio del form
+        document.getElementById('registrationForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            const messageDiv = document.getElementById('message');
-            const submitBtn = document.getElementById('submitBtn');
+            const msg = document.getElementById('message');
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Invio in corso...';
+            msg.className = 'message';
+            msg.textContent = '';
 
-            messageDiv.className = 'message';
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Invio in corso...';
+            const dati = new FormData(this);
+            dati.append('access_key', ACCESS_KEY);
+            dati.append('subject', 'Richiesta tesseramento - ' + dati.get('cognome') + ' ' + dati.get('nome'));
+            dati.append('from_name', dati.get('nome') + ' ' + dati.get('cognome'));
+            dati.append('to_email', 'giubal2001@yahoo.it, progettoauser2026@gmail.com');
 
-            const templateParams = {
-                to_email: "progettoauser2026@gmail.com",
-                nome: document.getElementById('nome').value,
-                cognome: document.getElementById('cognome').value,
-                indirizzo: document.getElementById('indirizzo').value,
-                dataNascita: document.getElementById('dataNascita').value,
-                codiceFiscale: document.getElementById('codiceFiscale').value,
-                telefono: document.getElementById('telefono').value
-            };
+            console.log('Invio dati:', {
+                access_key: ACCESS_KEY,
+                subject: dati.get('subject'),
+                to_email: dati.get('to_email')
+            });
 
-            emailjs.send("service_qwwrl0s", "template_b91aryq", templateParams)
-                .then(function (response) {
-                    messageDiv.className = 'message success';
-                    messageDiv.textContent = '✓ Registrazione completata! Email inviata con successo.';
-                    document.getElementById('registrationForm').reset();
-                    submitBtn.innerHTML = 'Invia Registrazione';
-                    submitBtn.disabled = false;
-                }, function (error) {
-                    messageDiv.className = 'message error';
-                    messageDiv.textContent = '✗ Errore: ' + (error.text || 'Invio fallito');
-                    console.error('Errore EmailJS:', error);
-                    submitBtn.innerHTML = 'Invia Registrazione';
-                    submitBtn.disabled = false;
+            try {
+                const r = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: dati
                 });
+                
+                console.log('Risposta status:', r.status);
+                const j = await r.json();
+                console.log('Risposta JSON:', j);
+                
+                if (j.success) {
+                    msg.className = 'message success';
+                    msg.textContent = '✓ Registrazione completata! Email inviata con successo.';
+                    this.reset();
+                    document.getElementById('strutturaAppartenenza').value = 'AUSER Territoriale Alto Chiascio ODV-ETS';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error(j.message || 'Errore sconosciuto: ' + JSON.stringify(j));
+                }
+            } catch (err) {
+                msg.className = 'message error';
+                msg.textContent = '✗ Errore: ' + err.message;
+                console.error('Errore completo:', err);
+            }
+            
+            btn.disabled = false;
+            btn.textContent = 'Invia Registrazione';
+        });
+
+        // Menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.getElementById('main-navigation');
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
         });
     </script>
 </body>
-
 </html>
