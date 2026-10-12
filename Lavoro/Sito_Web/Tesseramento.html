@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUSER Gubbio - Tesseramento</title>
     <link rel="stylesheet" href="Auser.css">
 </head>
+
 <body>
     <header>
         <div class="header-container">
             <h1><a href="index.html"><img src="Logo_Auser.png" alt="Logo AUSER"></a></h1>
-            <button class="menu-toggle" type="button" aria-label="Apri menu" aria-expanded="false" aria-controls="main-navigation">
+            <button class="menu-toggle" type="button" aria-label="Apri menu" aria-expanded="false"
+                aria-controls="main-navigation">
                 <span></span><span></span><span></span>
             </button>
             <nav id="main-navigation">
@@ -32,11 +35,14 @@
             <!-- DATI DI BASE -->
             <p class="tess-section">Dati di Base</p>
             <div class="form-row">
-                <div class="form-group"><label for="cognome">Cognome *</label><input type="text" id="cognome" name="cognome" required></div>
-                <div class="form-group"><label for="nome">Nome *</label><input type="text" id="nome" name="nome" required></div>
+                <div class="form-group"><label for="cognome">Cognome *</label><input type="text" id="cognome"
+                        name="cognome" required></div>
+                <div class="form-group"><label for="nome">Nome *</label><input type="text" id="nome" name="nome"
+                        required></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label for="dataNascita">Data Nascita *</label><input type="date" id="dataNascita" name="dataNascita" required></div>
+                <div class="form-group"><label for="dataNascita">Data Nascita *</label><input type="date"
+                        id="dataNascita" name="dataNascita" required></div>
                 <div class="form-group"><label for="sesso">Sesso *</label>
                     <select id="sesso" name="sesso" required>
                         <option value="">Seleziona</option>
@@ -46,49 +52,79 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label for="provinciaNascita">Provincia Nascita *</label><select id="provinciaNascita" name="provinciaNascita" required><option value="">Seleziona</option></select></div>
-                <div class="form-group"><label for="comuneNascita">Comune Nascita *</label><select id="comuneNascita" name="comuneNascita" required><option value="">Seleziona</option></select></div>
+                <div class="form-group"><label for="provinciaNascita">Provincia Nascita *</label><select
+                        id="provinciaNascita" name="provinciaNascita" required>
+                        <option value="">Seleziona</option>
+                    </select></div>
+                <div class="form-group"><label for="comuneNascita">Comune Nascita *</label><select id="comuneNascita"
+                        name="comuneNascita" required>
+                        <option value="">Seleziona</option>
+                    </select></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label for="codiceFiscale">Codice Fiscale *</label><input type="text" id="codiceFiscale" name="codiceFiscale" placeholder="XXXXXXXXXXXXXXXX" maxlength="16" style="text-transform: uppercase;" required></div>
+                <div class="form-group"><label for="codiceFiscale">Codice Fiscale *</label><input type="text"
+                        id="codiceFiscale" name="codiceFiscale" placeholder="XXXXXXXXXXXXXXXX" maxlength="16"
+                        style="text-transform: uppercase;" required></div>
             </div>
 
             <!-- RECAPITI TELEFONICI -->
             <p class="tess-section">Recapiti Telefonici</p>
             <div class="form-row">
-                <div class="form-group"><label for="telefono1">Telefono 1 *</label><input type="tel" id="telefono1" name="telefono1" placeholder="+39 3XX XXX XXXX" required></div>
-                <div class="form-group"><label for="telefono2">Telefono 2</label><input type="tel" id="telefono2" name="telefono2" placeholder="+39 3XX XXX XXXX"></div>
+                <div class="form-group"><label for="telefono1">Telefono 1 *</label><input type="tel" id="telefono1"
+                        name="telefono1" placeholder="+39 3XX XXX XXXX" required></div>
+                <div class="form-group"><label for="telefono2">Telefono 2</label><input type="tel" id="telefono2"
+                        name="telefono2" placeholder="+39 3XX XXX XXXX"></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label for="telefono3">Telefono 3</label><input type="tel" id="telefono3" name="telefono3" placeholder="+39 3XX XXX XXXX"></div>
+                <div class="form-group"><label for="telefono3">Telefono 3</label><input type="tel" id="telefono3"
+                        name="telefono3" placeholder="+39 3XX XXX XXXX"></div>
             </div>
 
             <!-- INDIRIZZO RESIDENZA -->
             <p class="tess-section">Indirizzo Residenza</p>
             <div class="form-row">
-                <div class="form-group"><label for="indirizzoResidenza">Indirizzo *</label><input type="text" id="indirizzoResidenza" name="indirizzoResidenza" required></div>
-                <div class="form-group"><label for="provinciaResidenza">Provincia Residenza *</label><select id="provinciaResidenza" name="provinciaResidenza" required><option value="">Seleziona</option></select></div>
+                <div class="form-group"><label for="indirizzoResidenza">Indirizzo *</label><input type="text"
+                        id="indirizzoResidenza" name="indirizzoResidenza" required></div>
+                <div class="form-group"><label for="provinciaResidenza">Provincia Residenza *</label><select
+                        id="provinciaResidenza" name="provinciaResidenza" required>
+                        <option value="">Seleziona</option>
+                    </select></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label for="capResidenza">CAP Residenza *</label><input type="text" id="capResidenza" name="capResidenza" placeholder="00000" maxlength="5" pattern="[0-9]{5}" inputmode="numeric" required></div>
-                <div class="form-group"><label for="comuneResidenza">Comune Residenza *</label><select id="comuneResidenza" name="comuneResidenza" required><option value="">Seleziona</option></select></div>
+                <div class="form-group"><label for="capResidenza">CAP Residenza *</label><input type="text"
+                        id="capResidenza" name="capResidenza" placeholder="00000" maxlength="5" pattern="[0-9]{5}"
+                        inputmode="numeric" required></div>
+                <div class="form-group"><label for="comuneResidenza">Comune Residenza *</label><select
+                        id="comuneResidenza" name="comuneResidenza" required>
+                        <option value="">Seleziona</option>
+                    </select></div>
             </div>
 
             <!-- INDIRIZZO CORRISPONDENZA -->
             <p class="tess-section">Indirizzo Corrispondenza</p>
             <div class="form-row">
-                <div class="form-group"><label for="indirizzoCorrispondenza">Indirizzo Corrispondenza</label><input type="text" id="indirizzoCorrispondenza" name="indirizzoCorrispondenza"></div>
-                <div class="form-group"><label for="provinciaCorrispondenza">Provincia Corrispondenza</label><select id="provinciaCorrispondenza" name="provinciaCorrispondenza"><option value="">Seleziona</option></select></div>
+                <div class="form-group"><label for="indirizzoCorrispondenza">Indirizzo Corrispondenza</label><input
+                        type="text" id="indirizzoCorrispondenza" name="indirizzoCorrispondenza"></div>
+                <div class="form-group"><label for="provinciaCorrispondenza">Provincia Corrispondenza</label><select
+                        id="provinciaCorrispondenza" name="provinciaCorrispondenza">
+                        <option value="">Seleziona</option>
+                    </select></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label for="capCorrispondenza">CAP Corrispondenza</label><input type="text" id="capCorrispondenza" name="capCorrispondenza" placeholder="00000" maxlength="5" pattern="[0-9]{5}" inputmode="numeric"></div>
-                <div class="form-group"><label for="comuneCorrispondenza">Comune Corrispondenza</label><select id="comuneCorrispondenza" name="comuneCorrispondenza"><option value="">Seleziona</option></select></div>
+                <div class="form-group"><label for="capCorrispondenza">CAP Corrispondenza</label><input type="text"
+                        id="capCorrispondenza" name="capCorrispondenza" placeholder="00000" maxlength="5"
+                        pattern="[0-9]{5}" inputmode="numeric"></div>
+                <div class="form-group"><label for="comuneCorrispondenza">Comune Corrispondenza</label><select
+                        id="comuneCorrispondenza" name="comuneCorrispondenza">
+                        <option value="">Seleziona</option>
+                    </select></div>
             </div>
 
             <!-- ALTRI DATI -->
             <p class="tess-section">Altri Dati</p>
             <div class="form-row">
-                <div class="form-group"><label for="email">E-Mail Personale</label><input type="email" id="email" name="email"></div>
+                <div class="form-group"><label for="email">E-Mail Personale</label><input type="email" id="email"
+                        name="email"></div>
                 <div class="form-group"><label for="impiego">Impiego</label>
                     <select id="impiego" name="impiego">
                         <option value="">Seleziona</option>
@@ -119,27 +155,45 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label for="coordRiferimento">Coord di Riferimento</label><select id="coordRiferimento" name="coordRiferimento"><option value="">Seleziona</option></select></div>
+                <div class="form-group"><label for="coordRiferimento">Coord di Riferimento</label><select
+                        id="coordRiferimento" name="coordRiferimento">
+                        <option value="">Seleziona</option>
+                    </select></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label for="note">Note</label><textarea id="note" name="note" rows="3"></textarea></div>
+                <div class="form-group"><label for="note">Note</label><textarea id="note" name="note"
+                        rows="3"></textarea></div>
             </div>
 
-            <input type="hidden" id="strutturaAppartenenza" name="strutturaAppartenenza" value="AUSER Territoriale Alto Chiascio ODV-ETS">
+            <input type="hidden" id="strutturaAppartenenza" name="strutturaAppartenenza"
+                value="AUSER Territoriale Alto Chiascio ODV-ETS">
 
             <div class="privacy-box">
                 <input type="checkbox" id="privacy" name="privacy" required>
-                <label for="privacy">Dichiaro di aver letto e accetto l'informativa sulla privacy.</label>
+                <label for="privacy">Dichiaro di aver letto e accetto <a
+                        href="Privacy Policy - AUSER Gubbio.html">l'informativa sulla privacy</a> .</label>
             </div>
 
             <button type="submit" id="submitBtn">Invia Registrazione</button>
         </form>
     </main>
+    <footer>
+        <h2>I nostri contatti</h2>
+        <div class="footer-content">
+            <div class="footer-links">
+                <p><img src="faceboock.png" alt="faceboock"><a href="https://www.facebook.com/share/19EokS28yr/">La
+                        nostra pagina Facebook</a></p>
 
+                <p><img src="instagram.png" alt="instagram"><a
+                        href="https://www.instagram.com/progettoauser2026/">Seguici su Instagram</a></p>
+            </div>
+        </div>
+    </footer>
     <script>
         const ACCESS_KEY = '38302d18-c8c7-4846-9679-ee1896d504fb';
         const COMUNI_REMOTE = 'https://raw.githubusercontent.com/matteocontrini/comuni-json/master/comuni.json';
 
+        // Carica i comuni dal repository remoto
         async function caricaComuni() {
             try {
                 const r = await fetch(COMUNI_REMOTE);
@@ -151,6 +205,7 @@
             }
         }
 
+        // Costruisce la struttura province/comuni
         function costruisciProvince(comuni) {
             const province = {};
             comuni.forEach(c => {
@@ -166,6 +221,7 @@
             return province;
         }
 
+        // Collega i select provincia/comune
         function collegaSelect(province, provId, comId) {
             const selProv = document.getElementById(provId);
             const selCom = document.getElementById(comId);
@@ -192,6 +248,7 @@
             });
         }
 
+        // Inizializza i select al caricamento della pagina
         document.addEventListener('DOMContentLoaded', async () => {
             try {
                 const comuni = await caricaComuni();
@@ -215,28 +272,41 @@
             msg.className = 'message';
             msg.textContent = '';
 
+            // Raccoglie i dati del form
             const dati = new FormData(this);
             dati.append('access_key', ACCESS_KEY);
             dati.append('subject', 'Richiesta tesseramento - ' + dati.get('cognome') + ' ' + dati.get('nome'));
             dati.append('from_name', dati.get('nome') + ' ' + dati.get('cognome'));
-            dati.append('to_email', 'giubal2001@yahoo.it, progettoauser2026@gmail.com');
+            dati.append('to_email', 'giubal2001@yahoo.it');
+
+            // Converti FormData in URLSearchParams per Web3Forms
+            const params = new URLSearchParams();
+            for (let [key, value] of dati) {
+                params.append(key, value);
+            }
 
             console.log('Invio dati:', {
                 access_key: ACCESS_KEY,
                 subject: dati.get('subject'),
-                to_email: dati.get('to_email')
+                to_email: dati.get('to_email'),
+                cognome: dati.get('cognome'),
+                nome: dati.get('nome')
             });
 
             try {
                 const r = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
-                    body: dati
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Accept': 'application/json'
+                    },
+                    body: params
                 });
-                
+
                 console.log('Risposta status:', r.status);
                 const j = await r.json();
                 console.log('Risposta JSON:', j);
-                
+
                 if (j.success) {
                     msg.className = 'message success';
                     msg.textContent = '✓ Registrazione completata! Email inviata con successo.';
@@ -251,18 +321,21 @@
                 msg.textContent = '✗ Errore: ' + err.message;
                 console.error('Errore completo:', err);
             }
-            
+
             btn.disabled = false;
             btn.textContent = 'Invia Registrazione';
         });
 
-        // Menu toggle
+        // Menu toggle per dispositivi mobili
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.getElementById('main-navigation');
-        menuToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
-            this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
-        });
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                nav.classList.toggle('active');
+                this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
+            });
+        }
     </script>
 </body>
+
 </html>
