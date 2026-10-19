@@ -73,14 +73,41 @@
             <!-- RECAPITI TELEFONICI -->
             <p class="tess-section">Recapiti Telefonici</p>
             <div class="form-row">
-                <div class="form-group"><label for="telefono1">Telefono 1 *</label><input type="tel" id="telefono1"
-                        name="telefono1" placeholder="+39 3XX XXX XXXX" required></div>
-                <div class="form-group"><label for="telefono2">Telefono 2</label><input type="tel" id="telefono2"
-                        name="telefono2" placeholder="+39 3XX XXX XXXX"></div>
+                <div class="form-group">
+                    <label for="telefono1">Telefono 1 *</label>
+                    <div class="phone-input">
+                        <input type="text" id="prefissoTelefono1" name="prefissoTelefono1"
+                            class="phone-prefix-input" value="+39" aria-label="Prefisso internazionale telefono 1"
+                            inputmode="tel" maxlength="5" pattern="\+[0-9]{1,4}" title="Inserisci un prefisso con massimo 4 cifre, ad esempio +39" required>
+                        <input type="tel" id="telefono1" name="telefono1" placeholder="1234567890" inputmode="numeric"
+                            pattern="[0-9]{10}" minlength="10" maxlength="10"
+                            title="Inserisci un numero di 10 cifre" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="telefono2">Telefono 2</label>
+                    <div class="phone-input">
+                        <input type="text" id="prefissoTelefono2" name="prefissoTelefono2"
+                            class="phone-prefix-input" value="+39" aria-label="Prefisso internazionale telefono 2"
+                            inputmode="tel" maxlength="5" pattern="\+[0-9]{1,4}" title="Inserisci un prefisso con massimo 4 cifre, ad esempio +39">
+                        <input type="tel" id="telefono2" name="telefono2" placeholder="1234567890"
+                            inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10"
+                            title="Inserisci un numero di 10 cifre">
+                    </div>
+                </div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label for="telefono3">Telefono 3</label><input type="tel" id="telefono3"
-                        name="telefono3" placeholder="+39 3XX XXX XXXX"></div>
+                <div class="form-group">
+                    <label for="telefono3">Telefono 3</label>
+                    <div class="phone-input">
+                        <input type="text" id="prefissoTelefono3" name="prefissoTelefono3"
+                            class="phone-prefix-input" value="+39" aria-label="Prefisso internazionale telefono 3"
+                            inputmode="tel" maxlength="5" pattern="\+[0-9]{1,4}" title="Inserisci un prefisso con massimo 4 cifre, ad esempio +39">
+                        <input type="tel" id="telefono3" name="telefono3" placeholder="1234567890"
+                            inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10"
+                            title="Inserisci un numero di 10 cifre">
+                    </div>
+                </div>
             </div>
 
             <!-- INDIRIZZO RESIDENZA -->
@@ -178,7 +205,7 @@
         </form>
     </main>
 
-     <footer>
+   <footer>
         <table class="footer-table">
             <tr>
                 <!-- Colonna 1: Contatti -->
@@ -203,15 +230,16 @@
                         Baldinucci Giuliana
                     </p>
                     <div class="contact-row">
+                       <p>
+                            <strong>Telefono</strong><br>
+                            <a href="tel:+390759221157">075/9221157</a>
+                        </p>
                         <p>
                             <strong>Cellulari</strong><br>
                             <a href="tel:+393480706072">348/0706072</a><br>
                             <a href="tel:+393484055998">348/4055998</a>
                         </p>
-                        <p>
-                            <strong>Telefono</strong><br>
-                            <a href="tel:+390759221157">075/9221157</a>
-                        </p>
+                       
                     </div>
                 </td>
 
