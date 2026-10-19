@@ -58,24 +58,25 @@ function collegaSelect(province, provId, comId) {
 
 // Inizializza i select al caricamento della pagina
 document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const comuni = await caricaComuni();
-        const province = costruisciProvince(comuni);
-        collegaSelect(province, 'provinciaNascita', 'comuneNascita');
-        collegaSelect(province, 'provinciaResidenza', 'comuneResidenza');
-        collegaSelect(province, 'provinciaCorrispondenza', 'comuneCorrispondenza');
-    } catch (err) {
-        console.error('Errore nel caricamento dei comuni:', err);
-    }
-
-    // Menu toggle per dispositivi mobili
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.getElementById('main-navigation');
-    if (menuToggle) {
+    if (menuToggle && nav) {
         menuToggle.addEventListener('click', function () {
             nav.classList.toggle('active');
             this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
         });
+    }
+
+    if (document.getElementById('registrationForm')) {
+        try {
+            const comuni = await caricaComuni();
+            const province = costruisciProvince(comuni);
+            collegaSelect(province, 'provinciaNascita', 'comuneNascita');
+            collegaSelect(province, 'provinciaResidenza', 'comuneResidenza');
+            collegaSelect(province, 'provinciaCorrispondenza', 'comuneCorrispondenza');
+        } catch (err) {
+            console.error('Errore nel caricamento dei comuni:', err);
+        }
     }
 
     // Gestisce l'invio del form (solo se esiste)
@@ -86,6 +87,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const msg = document.getElementById('message');
             const btn = document.getElementById('submitBtn');
+            const numeroSenzaPrefisso = ['telefono1', 'telefono2', 'telefono3'].find(idTelefono => {
+                const numero = document.getElementById(idTelefono).value;
+                const idPrefisso = `prefisso${idTelefono[0].toUpperCase()}${idTelefono.slice(1)}`;
+                return numero && !document.getElementById(idPrefisso).value.trim();
+            });
+            if (numeroSenzaPrefisso) {
+                msg.className = 'message error';
+                msg.textContent = `Inserisci il prefisso internazionale per ${numeroSenzaPrefisso}.`;
+                document.getElementById(`prefisso${numeroSenzaPrefisso[0].toUpperCase()}${numeroSenzaPrefisso.slice(1)}`).focus();
+                return;
+            }
+
             btn.disabled = true;
             btn.textContent = 'Invio in corso...';
             msg.className = 'message';
@@ -93,6 +106,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Raccoglie i dati del form
             const dati = new FormData(this);
+            ['telefono1', 'telefono2', 'telefono3'].forEach(idTelefono => {
+                const idPrefisso = `prefisso${idTelefono[0].toUpperCase()}${idTelefono.slice(1)}`;
+                const numero = dati.get(idTelefono);
+                if (numero) {
+                    const prefisso = dati.get(idPrefisso);
+                    dati.set(idTelefono, `${prefisso} ${numero}`);
+                }
+                dati.delete(idPrefisso);
+            });
             dati.append('access_key', ACCESS_KEY);
             dati.append('subject', 'Richiesta tesseramento - ' + dati.get('cognome') + ' ' + dati.get('nome'));
             dati.append('from_name', dati.get('nome') + ' ' + dati.get('cognome'));
