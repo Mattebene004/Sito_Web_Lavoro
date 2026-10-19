@@ -40,6 +40,80 @@ input:focus-visible {
     outline-offset: 4px;
 }
 
+/* Rimuove la sottolineatura e rende rosso il link al passaggio del mouse */
+.link-iscrizione {
+    text-decoration: none;
+    color: inherit;            /* mantiene il colore del testo originale */
+    transition: color 0.3s ease;
+}
+
+.link-iscrizione:hover {
+    color: red;
+}
+
+/* Tabella dei numeri Auser */
+.tabella-numeri {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    border-collapse: separate;
+    border-spacing: 20px 0;
+}
+
+.tabella-numeri td {
+    width: 33.33%;
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px 15px;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tabella-numeri td:hover {
+    transform: translateY(-5px);
+    border-color: red;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Numero grande */
+.tabella-numeri .numero {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 8px;
+}
+
+/* Etichetta descrittiva */
+.tabella-numeri .etichetta {
+    display: block;
+    font-size: 1rem;
+    color: #333333;
+    line-height: 1.4;
+}
+
+/* Su schermi piccoli le celle vanno una sotto l'altra */
+@media (max-width: 700px) {
+    .tabella-numeri,
+    .tabella-numeri tbody,
+    .tabella-numeri tr,
+    .tabella-numeri td {
+        display: block;
+        width: 100%;
+    }
+
+    .tabella-numeri td {
+        margin-bottom: 15px;
+    }
+
+    .tabella-numeri {
+        border-spacing: 0;
+    }
+}
+
 /* ===== HEADER E NAV ===== */
 header {
     position: relative;
@@ -536,6 +610,29 @@ main>img:first-child {
     resize: vertical;
 }
 
+.phone-input {
+    display: flex;
+    gap: 8px;
+}
+
+.tess-container .phone-input input.phone-prefix-input {
+    flex: 0 0 auto;
+    width: calc(5ch + 24px);
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.tess-container .phone-input input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 24px 8px 10px;
+}
+
+.phone-input input {
+    min-width: 0;
+    flex: 1;
+}
+
 .privacy-box {
     display: flex;
     align-items: flex-start;
@@ -939,6 +1036,26 @@ footer h2 {
 }
 
 /* ===== RESPONSIVE (ordine decrescente) ===== */
+@media (min-width: 769px) {
+    .tess-container {
+        width: calc(100% - 48px);
+        max-width: none;
+        padding: clamp(32px, 4vw, 56px);
+    }
+
+    .main-image.opening-image {
+        width: 80%;
+        max-width: 895px;
+    }
+
+    .privacy-header > img.main-image {
+        width: 80%;
+        max-width: 895px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
 @media (max-width: 900px) {
     .privacy-grid {
         grid-template-columns: 1fr;
@@ -1228,7 +1345,6 @@ footer h2 {
     }
 
     .projects-grid {
-        grid-template-columns: 1fr;
         gap: 20px;
         padding: 20px 12px;
     }
@@ -1338,7 +1454,6 @@ footer h2 {
     }
 
     .projects-grid {
-        grid-template-columns: 1fr;
         gap: 18px;
         padding: 18px 10px;
     }
@@ -1356,6 +1471,56 @@ footer h2 {
     }
 }
 
+@media (max-width: 768px) {
+    .footer-table tr {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 18px;
+    }
+
+    .footer-table td {
+        min-width: 0;
+    }
+
+    .footer-table td:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .footer-table a {
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 360px) {
+    footer {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .footer-table tr {
+        gap: 20px 12px;
+    }
+
+    .footer-table h2 {
+        font-size: 0.92rem;
+    }
+
+    .footer-table p {
+        font-size: 0.82rem;
+    }
+
+    .footer-links p {
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .footer-links img {
+        flex: 0 0 20px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
 /* ===== RIDUZIONE ANIMAZIONI ===== */
 @media (prefers-reduced-motion: reduce) {
 
@@ -1366,5 +1531,18 @@ footer h2 {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    }
+}
+
+/* ===== PROJECTS: IMMAGINI INTERE SU MOBILE (correzione) ===== */
+@media (max-width: 768px) {
+    .project-card {
+        height: auto;
+    }
+
+    .project-card img {
+        height: auto;
+        max-height: none;
+        object-fit: contain;
     }
 }
