@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUSER Gubbio - Le Nostre Sedi</title>
+  <link rel="stylesheet" href="Auser.css?v=20261022">
+  <link rel="icon" type="image/png" href="logo_Auser.png">
+  <style>
+
+        .main-image {
+        display: block;
+        width: 100%;
+        margin: 0 auto 20px auto;
+    }
+
+    .main-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-image.opening-image {
+      width: 50%;
+      max-width: 500px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    @media (max-width: 768px) {
+      .main-image.opening-image {
+        width: 75%;
+      }
+    }
+
+  #cerca {
+    display: block !important;
+    width: 100% !important;
+    min-height: 52px;
+    margin: 0 !important;
+    padding: 12px 18px !important;
+    color: #253530 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #d9dfda !important;
+    border-radius: 999px !important;
+    box-shadow: 0 12px 32px rgba(28, 48, 40, 0.09) !important;
+    box-sizing: border-box !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 16px !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    outline: none;
+  }
+
+  .ricerca {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto 12px;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 768px) {
+    .ricerca {
+      max-width: none;
+    }
+    #cerca {
+      border-radius: 14px !important;
+    }
+  }
+
+  /* Layout: lista a sinistra, cartina piccola a destra */
+  .sedi-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    align-items: start;
+  }
+  .sedi-principale {
+    min-width: 0;
+  }
+  .sedi-principale .ricerca {
+    padding: 0;
+    margin: 0 0 12px;
+    max-width: none;
+  }
+
+  /* Cartina laterale */
+  .mp-aside {
+    position: sticky;
+    top: 16px;
+  }
+  .mp-box svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--color-paper);
+    border: 0;
+    border-radius: 10px;
+  }
+  .mp-ombra { fill: rgba(0, 0, 0, 0.25); }
+  .mp-pin { fill: #e53935; stroke: #ffffff; stroke-width: 1.2; }
+  .mp-punto { fill: #ffffff; }
+  .mp-g { cursor: pointer; }
+  .mp-info {
+    margin: 8px 0 0;
+    font-size: 12px;
+    color: #456;
+    line-height: 1.4;
+  }
+  .mp-scheda {
+    position: fixed;
+    display: none;
+    max-width: 340px;
+    max-height: 70vh;
+    overflow: auto;
+    background: #ffffff;
+    border: 1px solid #d9dfda;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(28, 48, 40, 0.18);
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #253530;
+    z-index: 100;
+    pointer-events: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mp-scheda h3 { margin: 0 0 4px; font-size: 16px; color: #c62828; }
+  .mp-scheda .mp-sub { margin: 0 0 8px; color: #667; }
+  .mp-scheda .mp-sede { border-top: 1px solid #eee; padding: 6px 0; }
+  .mp-scheda .mp-nome { font-weight: bold; margin-bottom: 2px; }
+  .mp-scheda .mp-chiudi {
+    position: sticky;
+    top: -12px;
+    float: right;
+    margin: -8px -10px 4px 8px;
+    padding: 4px 8px;
+    color: #253530;
+    background: #ffffff;
+    border: 1px solid #d9dfda;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 900px) {
+    .sedi-layout {
+      grid-template-columns: 1fr;
+    }
+    .mp-aside {
+      position: static;
+      order: -1;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 8px;
+    }
+  }
+
+  main {
+    width: 100%;
+    max-width: none;
+    padding: 52px clamp(16px, 3vw, 48px) 24px;
+  }
+
+  .sedi-layout {
+    width: 100%;
+    max-width: none;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    padding: 0;
+  }
+
+  @media (min-width: 901px) {
+    .sedi-layout {
+      grid-template-columns: minmax(0, 1fr) 380px;
+    }
+
+    .mp-aside {
+      margin-top: 64px;
+    }
+  }
+
+  @media (min-width: 769px) {
+    header .header-container {
+      width: 100%;
+      max-width: none;
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    main {
+      padding: 36px 20px 24px;
+    }
+
+    .footer-table tr {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 18px;
+    }
+
+    .footer-table td {
+      min-width: 0;
+    }
+
+    .footer-table td:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .footer-table a {
+      overflow-wrap: anywhere;
+    }
+
+    .sedi-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    .sedi-principale {
+      display: contents;
+    }
+
+    .sedi-principale .ricerca {
+      order: 0;
+    }
+
+    .mp-aside {
+      order: 1;
+      width: 100%;
+      max-width: min(100%, 240px);
+    }
+
+    .sedi-principale .contatore {
+      order: 2;
+    }
+
+    #elenco {
+      order: 3;
+    }
+  }
+
+  @media (max-width: 540px) {
+    main {
+      padding: 28px 14px 20px;
+    }
+
+    .sedi-layout {
+      gap: 16px;
+    }
+
+    .mp-aside {
+      max-width: min(100%, 220px);
+    }
+
+    .mp-scheda {
+      right: 12px;
+      bottom: 12px;
+      left: 12px !important;
+      top: auto !important;
+      width: auto;
+      max-width: none;
+      max-height: min(55vh, 440px);
+      touch-action: pan-y;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <h1><a href="index.html"><img src="Logo_Auser.png" alt="Logo AUSER"></a></h1>
+
+      <button class="menu-toggle" type="button" aria-label="Apri menu" aria-expanded="false"
+        aria-controls="main-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="main-navigation">
+        <ul>
+          <li><a href="Chi_Siamo.html">Chi siamo</a></li>
+          <li><a href="Cosa_Facciamo.html">Cosa facciamo</a></li>
+          <li><a href="Valori.html">I Nostri Valori</a></li>
+          <li><a href="Tesseramento.html">Tesseramento</a></li>
+          <li><a href="Debe.html">Le nostre sedi</a></li>
+          <li><a href="Idee.html">Proponi un'Idea</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+       <div class="main-image opening-image">
+ <img src="sedi.png" alt="Le nostre sedi" class="main-image">
+   
+  </div>
+    <div class="Titolo_sottotitolo">
+      <h2>Le Nostre Sedi</h2>
+      <p>Centri socio culturali e sedi Auser Umbria</p>
+    </div>
+ 
+
+
+    <div class="sedi-layout">
+      <div class="sedi-principale">
+        <div class="ricerca">
+          <input type="search" id="cerca" placeholder="Cerca per nome, città, referente o indirizzo...">
+        </div>
+        <p class="contatore" id="contatore"></p>
+
+        <div id="elenco"></div>
+      </div>
+
+      <aside class="mp-aside">
+        <div class="mp-box">
+          <svg id="mappa" viewBox="0 0 1000 1230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mappa delle sedi AUSER in Umbria">
+            <g id="mappa-comuni"></g>
+            <defs>
+              <g id="mp-pin">
+                <ellipse class="mp-ombra" cx="1.5" cy="1" rx="6" ry="2.2" />
+                <path class="mp-pin" d="M0,0 C-6,-6 -9,-10 -9,-15 A9,9 0 0 1 9,-15 C9,-10 6,-6 0,0 Z" />
+                <circle class="mp-punto" cx="0" cy="-15" r="3.2" />
+              </g>
+            </defs>
+            <g id="mappa-pin"></g>
+          </svg>
+        </div>
+        <p class="mp-info" id="mappa-info">Caricamento della mappa...</p>
+      </aside>
+    </div>
+  </main>
+
+  <div class="mp-scheda" id="mappa-scheda"></div>
+
+  <footer>
+    <table class="footer-table">
+      <tr>
+        <td>
+          <h2>Privacy</h2>
+          <p><a href="Privacy Policy - AUSER Gubbio.html">Privacy Policy</a></p>
+        </td>
+        <!-- Colonna 1: Contatti -->
+        <td>
+          <h2>📍 Dove Siamo</h2>
+          <p>
+            <strong>Organizzazione</strong><br>
+            Auser Alto Chiascio
+          </p>
+          <p>
+            <strong>Indirizzo</strong><br>
+            Via Matteotti, 63<br>
+            06024 Gubbio (PG)
+          </p>
+        </td>
+
+        <!-- Colonna 2: Referente -->
+        <td>
+          <h2>👤 Referente</h2>
+          <p>
+            <strong>Nome</strong><br>
+            Baldinucci Giuliana
+          </p>
+          <div class="contact-row">
+            <p>
+              <strong>Telefono</strong><br>
+              <a href="tel:+390759221157">075/9221157</a>
+            </p>
+            <p>
+              <strong>Cellulari</strong><br>
+              <a href="tel:+393480706072">348/0706072</a><br>
+              <a href="tel:+393484055998">348/4055998</a>
+            </p>
+          </div>
+        </td>
+
+        <!-- Colonna 3: Email -->
+        <td>
+          <h2>📧 Email</h2>
+          <p>
+            <a href="mailto:giubal2001@yahoo.it">giubal2001@yahoo.it</a>
+          </p>
+          <p>
+            <a href="mailto:progettoauser2026@gmail.com">progettoauser2026@gmail.com</a>
+          </p>
+        </td>
+
+        <!-- Colonna 4: Social Media -->
+        <td>
+          <h2>Seguici</h2>
+          <div class="footer-links">
+            <p>
+              <img src="faceboock.png" alt="Facebook">
+              <a href="https://www.facebook.com/share/19EokS28yr/">La nostra pagina Facebook</a>
+            </p>
+            <p>
+              <img src="Instagram.jpeg" alt="Instagram">
+              <a href="https://www.instagram.com/progettoauser2026/">Seguici su Instagram</a>
+            </p>
+          </div>
+        </td>
+
+        <!-- Colonna 5: Info Progetto -->
+        <td>
+          <h2>ℹ️ Informazioni</h2>
+          <p>Associazione di volontariato dedicata al benessere della comunità e alla solidarietà sociale.</p>
+          <div class="info-box">
+            <strong>Codice Fiscale:</strong><br>
+            <span>92007970541</span>
+          </div>
+        </td>
+        
+      </tr>
+    </table>
+  </footer>
+
+  <script src="Auser.js?v=20261022"></script>
+
+  <script>
+    // ===== MAPPA =====
+    var MAPPA_SVG_FILE = 'Map_of_municipalities_of_Umbria_-_Italy.svg';
+
+    // Posizioni dei pallini, in pixel dell'immagine originale 979x1024
+    var PIN_POS = [
+      [240,147],[263,147],[415,225],[310,353],[383,338],
+      [170,368],[185,365],[199,352],[204,358],[213,349],[230,343],
+      [397,390],[384,415],[341,409],[340,425],[323,440],[318,460],
+      [462,428],[481,432],
+      [562,495],[581,493],[592,505],
+      [748,610],[660,634],[666,649],[859,671],
+      [347,677],[371,674],[358,688],
+      [503,829],[519,836]
+    ];
+    var MAPPA_SX = 1000 / 979, MAPPA_SY = 1230 / 1024;
+
+    // Comuni dell'SVG che appartengono a ciascuna città della lista sedi
+    var COMUNI_CITTA = {
+      'Perugia': ['Perugia'],
+      'Assisi': ['Assisi'],
+      'Foligno': ['Foligno', 'Montefalco', 'Trevi'],
+      'Spoleto': ['Spoleto'],
+      'Città di Castello': ['Città di Castello', 'Trestina'],
+      'Gubbio': ['Gubbio'],
+      'Trasimeno': ['Tuoro sul Trasimeno', 'Tuoro', 'Castiglion del Lago', 'Castiglione del Lago', 'Passignano sul Trasimeno', 'Paciano', 'Città della Pieve'],
+      'Todi': ['Todi', 'Marsciano'],
+      'Terni': ['Terni'],
+      'Norcia': ['Norcia']
+    };
+
+    function normNome(s) {
+      return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z]/g, '');
+    }
+
+    // Crea il link a Google Maps per un indirizzo
+    function linkGoogleMaps(indirizzo) {
+      return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(indirizzo + ', Italia');
+    }
+
+    function iniziaMappa(sedi) {
+      var NS = 'http://www.w3.org/2000/svg';
+      var svg = document.getElementById('mappa');
+      var gComuni = document.getElementById('mappa-comuni');
+      var gPin = document.getElementById('mappa-pin');
+      var info = document.getElementById('mappa-info');
+      var scheda = document.getElementById('mappa-scheda');
+      var comuniPaths = [];
+      var cittaSelezionata = null;
+
+      var cittaDiComune = {};
+      Object.keys(COMUNI_CITTA).forEach(function (citta) {
+        COMUNI_CITTA[citta].forEach(function (c) { cittaDiComune[normNome(c)] = citta; });
+      });
+
+      function el(tag, testo, classe) {
+        var e = document.createElement(tag);
+        if (testo) e.textContent = testo;
+        if (classe) e.className = classe;
+        return e;
+      }
+
+      function riempiScheda(nomeComune, citta) {
+        scheda.textContent = '';
+        var chiudi = el('button', 'Chiudi', 'mp-chiudi');
+        chiudi.type = 'button';
+        chiudi.setAttribute('aria-label', 'Chiudi dettagli della città');
+        chiudi.addEventListener('click', function () {
+          cittaSelezionata = null;
+          scheda.style.display = 'none';
+        });
+        scheda.appendChild(chiudi);
+        if (citta) {
+          scheda.appendChild(el('h3', citta));
+          scheda.appendChild(el('p', 'Comune: ' + nomeComune, 'mp-sub'));
+          sedi.filter(function (s) { return s.citta === citta; }).forEach(function (s) {
+            var box = el('div', '', 'mp-sede');
+            box.appendChild(el('div', s.nome, 'mp-nome'));
+            if (s.indirizzo) {
+              var riga = el('div');
+              var link = el('a', '📍 ' + s.indirizzo);
+              link.href = linkGoogleMaps(s.indirizzo);
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
+              riga.appendChild(link);
+              box.appendChild(riga);
+            }
+            if (s.referente) box.appendChild(el('div', '👤 ' + s.referente));
+            if (s.telefoni.length) box.appendChild(el('div', '📞 ' + s.telefoni.join(' · ')));
+            if (s.email.length) box.appendChild(el('div', '✉️ ' + s.email.join(', ')));
+            scheda.appendChild(box);
+          });
+        } else {
+          scheda.appendChild(el('h3', nomeComune));
+          scheda.appendChild(el('p', 'Nessuna sede registrata in questo comune.', 'mp-sub'));
+        }
+      }
+
+      function muoviScheda(e) {
+        var left = e.clientX + 16;
+        if (left + 350 > window.innerWidth) left = e.clientX - 356;
+        scheda.style.left = Math.max(8, left) + 'px';
+        scheda.style.top = (e.clientY + 16) + 'px';
+      }
+
+      function comuneIn(x, y) {
+        var pt = svg.createSVGPoint();
+        pt.x = x; pt.y = y;
+        for (var i = 0; i < comuniPaths.length; i++) {
+          if (comuniPaths[i].isPointInFill(pt)) {
+            var p = comuniPaths[i];
+            return p.id || (p.closest('[id]') ? p.closest('[id]').id : 'Comune non identificato');
+          }
+        }
+        return 'Fuori dai comuni';
+      }
+
+      function disegnaPallini() {
+        var cittaDisegnate = new Set();
+        PIN_POS.forEach(function (p) {
+          var x = p[0] * MAPPA_SX;
+          var y = p[1] * MAPPA_SY;
+          var nome = comuneIn(x, y);
+          var citta = cittaDiComune[normNome(nome)] || null;
+          if (!citta || cittaDisegnate.has(citta)) return;
+          cittaDisegnate.add(citta);
+
+          var g = document.createElementNS(NS, 'g');
+          g.setAttribute('class', 'mp-g');
+          g.setAttribute('transform', 'translate(' + x.toFixed(1) + ',' + y.toFixed(1) + ') scale(1.6)');
+          g.setAttribute('role', 'button');
+          g.setAttribute('tabindex', '0');
+          g.setAttribute('aria-label', 'Mostra le sedi di ' + citta);
+          var use = document.createElementNS(NS, 'use');
+          use.setAttribute('href', '#mp-pin');
+          g.appendChild(use);
+
+          g.addEventListener('mouseenter', function (e) {
+            if (cittaSelezionata) return;
+            riempiScheda(nome, citta);
+            scheda.style.display = 'block';
+            muoviScheda(e);
+          });
+          g.addEventListener('mousemove', muoviScheda);
+          g.addEventListener('mouseleave', function () {
+            if (!cittaSelezionata) scheda.style.display = 'none';
+          });
+          g.addEventListener('click', function (e) {
+            e.stopPropagation();
+            cittaSelezionata = citta;
+            riempiScheda(nome, citta);
+            scheda.style.display = 'block';
+            if (window.matchMedia('(min-width: 541px)').matches) muoviScheda(e);
+          });
+          g.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              g.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+            }
+          });
+          gPin.appendChild(g);
+        });
+        document.addEventListener('click', function (e) {
+          if (cittaSelezionata && !scheda.contains(e.target) && !gPin.contains(e.target)) {
+            cittaSelezionata = null;
+            scheda.style.display = 'none';
+          }
+        });
+        info.textContent = 'Seleziona un pallino per vedere le sedi della città.';
+      }
+
+      fetch(MAPPA_SVG_FILE)
+        .then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function (txt) {
+          var doc = new DOMParser().parseFromString(txt, 'image/svg+xml');
+          if (doc.getElementsByTagName('parsererror').length) throw new Error('SVG non valido');
+          Array.prototype.forEach.call(doc.documentElement.children, function (node) {
+            if (node.tagName === 'style') {
+              document.head.appendChild(document.importNode(node, true));
+            } else {
+              gComuni.appendChild(document.importNode(node, true));
+            }
+          });
+          comuniPaths = Array.prototype.filter.call(gComuni.querySelectorAll('path'), function (p) {
+            return !p.closest('.province, .regioni') && getComputedStyle(p).fill !== 'none';
+          });
+          disegnaPallini();
+        })
+        .catch(function (err) {
+          info.textContent = 'Mappa non disponibile (' + err.message + '). ' +
+            'Se apri la pagina dal disco, avvia un server locale, ad esempio con: python3 -m http.server';
+        });
+    }
+
+    // ===== LISTA SEDI =====
+    document.addEventListener("DOMContentLoaded", () => {
+      const sedi = [
+        // Perugia
+        { citta: "Perugia", nome: 'Centro Socio Culturale "I Leoni"', indirizzo: "Str. Ferriere Sabbioni, Santa Maria Rossa 06132 Perugia", referente: "Giombini Mirco", telefoni: ["347/5347461"], email: [] },
+        { citta: "Perugia", nome: "Centro Socio Culturale San Marco", indirizzo: "Via del Cimitero, 20 06131 Perugia", referente: "Pres. Ercolanelli Maurizio", telefoni: ["339/3464593"], email: [] },
+        { citta: "Perugia", nome: 'Centro Socio Culturale "Europa 93"', indirizzo: "Via Isarco, 40 06135 Perugia", referente: "Pres. Mariolina Rosi", telefoni: ["335/8450593"], email: ["csceuropa93@libero.it"] },
+        { citta: "Perugia", nome: "Associazione Ricreativa Culturale Sportiva Colle Umberto 10", indirizzo: "Via della Ghiaia, 11 06133 Perugia", referente: "Pres. Michele Trinari", telefoni: ["347/4081288"], email: [] },
+        { citta: "Perugia", nome: 'Centro Socio Culturale "Il Gabbiano"', indirizzo: "Via del Papavero, 10 06132 San Martino in Campo, Perugia", referente: "Pres. Ricci Maria Grazia", telefoni: ["347/8667344"], email: ["giancarloceccarelli46@gmail.com", "cscgabbiano@gmail.com"] },
+        { citta: "Perugia", nome: "Centro Socio Culturale Ramazzano", indirizzo: "Via del Teatro 06132 Perugia", referente: "Roberto Talini", telefoni: ["329/2330695"], email: ["cscramazzano@gmail.com"] },
+        { citta: "Perugia", nome: "Auser Volontariato Perugia Media Valle del Tevere", indirizzo: "Via G. Vico, 10 06124 Perugia", referente: "Pres. Franca Gasparri", telefoni: ["075/5005666 (Filo d'Argento)"], email: ["auservolontariatopg@tiscali.it"] },
+        { citta: "Perugia", nome: "Centro Socio Culturale Pila", indirizzo: "Str. Castel del Piano-Pila, 38 Perugia", referente: "Presidente Segazzi Silvano", telefoni: ["393/3317890"], email: ["cscpilapg@gmail.com"] },
+
+        // Assisi
+        { citta: "Assisi", nome: "Auser Volontariato Distretto Assisano", indirizzo: "Piazza Chiesa Nuova, 8 Assisi (PG)", referente: "Presid. Borgarelli Pasquale", telefoni: ["348 7360137"], email: ["auser.distrettoassisano@gmail.com"] },
+        { citta: "Assisi", nome: "Libera Università Pololare Auser Reg. Umbria", indirizzo: "Via della Cooperazione 19 06081 Assisi (PG)", referente: "Sciamanna Enrico", telefoni: ["329/6184106"], email: ["sciamannen@tin.it"] },
+
+        // Foligno
+        { citta: "Foligno", nome: "Auser Volontariato Montefalco", indirizzo: "Viale della Vittoria - Parcheggio 06036 Montefalco (PG)", referente: "Montefalchesi Silvestro", telefoni: ["348/8122739"], email: [] },
+        { citta: "Foligno", nome: "Auser Volontariato Foligno", indirizzo: "Via Oberdan, 119 06034 Foligno (PG)", referente: "Casini Vittorio", telefoni: ["0742/353179", "349/1517613"], email: ["auserfoligno@interfree.it"] },
+        { citta: "Foligno", nome: "Centro Sociale Gruppo Martani", indirizzo: "Via Coste, 2 Trevi (PG)", referente: "Presidente Coricelli Pietro", telefoni: ["328/0079989"], email: ["centromartani@virgilio.it"] },
+
+        // Spoleto
+        { citta: "Spoleto", nome: "Auser Spoleto", indirizzo: "Via Nursina, 12 06049 Spoleto (PG)", referente: "Mari Stefano", telefoni: ["0743/224317"], email: ["auserspoleto@libero.it"] },
+        { citta: "Spoleto", nome: "Centro Sociale per anziani Auser Insieme", indirizzo: "Via Nursina, 12 06049 Spoleto (PG)", referente: "", telefoni: [], email: ["auserspoleto@libero.it"] },
+
+        // Città di Castello
+        { citta: "Città di Castello", nome: "Auser Alta Umbria", indirizzo: "Via G. di Vittorio 9 06012 Città di Castello (PG)", referente: "Presid. Ciabucchi Antonio", telefoni: ["075/8557672", "329/6264790"], email: ["annamarter@libero.it"] },
+        { citta: "Città di Castello", nome: "Società Bocciofila Trestinese Auser", indirizzo: "Via Tommaso D'Aquino, 8 06018 Trestina (PG)", referente: "Luciano Domenichini", telefoni: ["338/2178013"], email: ["domenichini.53@gmail.com"] },
+
+        // Gubbio
+        { citta: "Gubbio", nome: "Auser Alto Chiascio", indirizzo: "Via Matteotti, 63 06024 Gubbio (PG)", referente: "Baldinucci Giuliana", telefoni: ["075/9221157", "348/0706072", "348/4055998"], email: ["giubal2001@yahoo.it"] },
+
+        // Trasimeno
+        { citta: "Trasimeno", nome: "CIS Centro Iniziative Sociali Tuoro", indirizzo: "Via del Porto, 32/B 06069 Tuoro (PG)", referente: "Presid. Franco Luchini", telefoni: ["075/825331", "346/1235821"], email: [] },
+        { citta: "Trasimeno", nome: 'Centro Sociale "L\'incontro"', indirizzo: "Via Firenze, 106 06061 Castiglion del Lago (PG)", referente: "Moroni Guglielmo", telefoni: ["075/953550", "339/2435891"], email: ["csaclago@libero.it"] },
+        { citta: "Trasimeno", nome: 'Centro Sociale Anziani "Vita agli anni"', indirizzo: "Via della Rondolina, 2 06065 Passignano sul Trasimeno (PG)", referente: "Coccolini Faliero", telefoni: ["340/8819031"], email: ["falierococcolini@gmail.com"] },
+        { citta: "Trasimeno", nome: "Centro Sociale Anziani Remo Boldrini", indirizzo: "Via Tommaso Rossini, 18/A 06060 Paciano (PG)", referente: "Presidente Serafini Paolo", telefoni: ["347/0434470"], email: ["csapaciano@libero.it"] },
+        { citta: "Trasimeno", nome: "Centro Sociale Anziani L'ombra del Nocciolo", indirizzo: "Via Vittorio Veneto, 6 06062 Città della Pieve (PG)", referente: "Binaretti Marcella", telefoni: ["349/2331003"], email: ["marcellabinaretti@tiscali.it"] },
+        { citta: "Trasimeno", nome: "Associazione Volontari S. Eugenio Centro Auser", indirizzo: "Via G. di Vittorio, 60 06062 Città della Pieve (PG)", referente: "Presidente Giorgio Pieroni", telefoni: ["335/7658333"], email: ["giorgiopieroni@alice.it"] },
+
+        // Todi
+        { citta: "Todi", nome: "Centro di Aggregazione Verde Todi", indirizzo: "Via XXV Aprile, 1/M 06059 Todi (PG)", referente: "Pres. Di Bello Nicola", telefoni: ["329/6006806"], email: ["ausertodi@gmail.com", "centro-aggregazione@libero.it"] },
+        { citta: "Todi", nome: "Centro Sociale Anziani L'incontro (Marsciano)", indirizzo: "Piazza Carlo Marx, 23 06055 Marsciano (PG)", referente: "Presid. Amalia Marchini", telefoni: ["347/9042533", "075/8741556"], email: ["incontromarsciano@gmail.com"] },
+        { citta: "Todi", nome: "Auser Volontariato Media Valle del Tevere (Todi)", indirizzo: "Piazza Umberto Primo, Todi", referente: "Presidente Buconi Graziella", telefoni: ["338/8895096"], email: ["ausertodi@gmail.com"] },
+
+        // Terni
+        { citta: "Terni", nome: "Associazione Orion", indirizzo: "Voc. Casali di Papigno, 76 05100 Terni", referente: "Romolo Bartolucci", telefoni: ["335/7220526"], email: ["bartolucci@umbria.cgil.it"] },
+        { citta: "Terni", nome: "Auser Volontariato Terni", indirizzo: "Via San Procolo, 8 05100 Terni", referente: "Presidente Vania Cittadini", telefoni: ["327/1888417", "0744/814957 (Filo d'Argento)"], email: ["cittadinivania@gmail.com"] },
+
+        // Norcia
+        { citta: "Norcia", nome: "Auser Volontariato Valnerina", indirizzo: "", referente: "Presidente Delle Grotti Lorenzo", telefoni: [], email: ["auservalnerina@gmail.com"] }
+      ];
+
+      const elenco = document.getElementById("elenco");
+      const cerca = document.getElementById("cerca");
+      const contatore = document.getElementById("contatore");
+
+      const gruppi = {};
+      sedi.forEach((s) => {
+        (gruppi[s.citta] ??= []).push(s);
+      });
+
+      const creaScheda = (s) => {
+        const tel = s.telefoni
+          .map((n) => `<a href="tel:${n.replace(/\D/g, "")}">${n}</a>`)
+          .join(" · ");
+        const mail = s.email
+          .map((e) => `<a href="mailto:${e}">${e}</a>`)
+          .join("<br>");
+        const mapsUrl = s.indirizzo
+          ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(s.indirizzo + ", Italia")
+          : "";
+
+        return `
+          <article class="card sede-card">
+            <h3>${s.nome}</h3>
+            ${s.indirizzo ? `<p>📍 <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer">${s.indirizzo}</a></p>` : ""}
+            ${s.referente ? `<p>👤 ${s.referente}</p>` : ""}
+            ${tel ? `<p>📞 ${tel}</p>` : ""}
+            ${mail ? `<p>✉️ ${mail}</p>` : ""}
+          </article>`;
+      };
+
+      elenco.innerHTML = Object.entries(gruppi)
+        .map(([citta, lista]) => `
+          <section class="section gruppo-citta">
+            <h2>${citta}</h2>
+            <div class="attivita">
+              ${lista.map(creaScheda).join("")}
+            </div>
+          </section>`)
+        .join("");
+
+      const aggiornaContatore = (n) => {
+        contatore.textContent = `${n} ${n === 1 ? "sede trovata" : "sedi trovate"}`;
+      };
+
+      cerca.addEventListener("input", () => {
+        const q = cerca.value.trim().toLowerCase();
+        let visibili = 0;
+
+        elenco.querySelectorAll(".gruppo-citta").forEach((sezione) => {
+          let n = 0;
+          sezione.querySelectorAll(".sede-card").forEach((scheda) => {
+            const ok = scheda.textContent.toLowerCase().includes(q);
+            scheda.hidden = !ok;
+            if (ok) n++;
+          });
+          sezione.hidden = n === 0;
+          visibili += n;
+        });
+
+        aggiornaContatore(visibili);
+      });
+
+      aggiornaContatore(sedi.length);
+
+      iniziaMappa(sedi);
+    });
+  </script>
+</body>
+</html>
